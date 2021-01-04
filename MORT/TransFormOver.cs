@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.Services.Client;
+//using System.Data.Services.Client;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -169,8 +169,24 @@ namespace MORT
             }
         }
 
+        // FIXME: WCF Stub
+        public class DataServiceContextStub
+        {
+            public ICredentials Credentials;
 
-        public partial class TranslatorContainer : System.Data.Services.Client.DataServiceContext
+            protected DataServiceContextStub(Uri serviceRoot) { }
+
+            public DataServiceQuery<T> CreateQuery<T>(string x) { throw new NotImplementedException(); }
+        }
+
+        public class DataServiceQuery<T>
+        {
+            public DataServiceQuery<T> AddQueryOption(string x, string y) { throw new NotImplementedException(); }
+
+            public IEnumerable<T> Execute() { throw new NotImplementedException(); }
+        }
+
+        public partial class TranslatorContainer : DataServiceContextStub//System.Data.Services.Client.DataServiceContext
         {
 
             public TranslatorContainer(Uri serviceRoot) :
@@ -232,10 +248,10 @@ namespace MORT
         private static Translation TranslateString(TranslatorContainer tc, string inputString, string transCode, string resultCode)
         {
 
-            System.Data.Services.Client.DataServiceQuery<MORT.TransFormOver.Translation> translationQuery = tc.Translate(inputString, resultCode, transCode);
+            DataServiceQuery<Translation> translationQuery = tc.Translate(inputString, resultCode, transCode);
 
             // Call the query and get the results as a List
-            System.Collections.Generic.List<MORT.TransFormOver.Translation> translationResults = translationQuery.Execute().ToList();
+            List<Translation> translationResults = translationQuery.Execute().ToList();
 
             // Verify there was a result
             if (translationResults.Count() <= 0)

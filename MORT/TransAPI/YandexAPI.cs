@@ -1,4 +1,6 @@
 ﻿using RestSharp;
+using RestSharp.Serialization.Json;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -73,7 +75,7 @@ namespace MORT
             IRestResponse response = client.Execute(request);
 
             //RestSharp.Serialization.Json.JsonDeserializer deserial = new RestSharp.Serialization.Json.JsonDeserializer();
-            RestSharp.Deserializers.JsonDeserializer deserial = new RestSharp.Deserializers.JsonDeserializer();
+            JsonDeserializer deserial = new JsonDeserializer();
 
             string re = deserial.Deserialize<string>(response);
             Util.ShowLog(re);

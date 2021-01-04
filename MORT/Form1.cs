@@ -258,6 +258,7 @@ namespace MORT
 
         class Loader : MarshalByRefObject
         {
+            [Obsolete]
             public override object InitializeLifetimeService()
             {
                 return null;

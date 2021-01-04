@@ -1,4 +1,6 @@
 ﻿using RestSharp;
+using RestSharp.Serialization.Json;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +25,7 @@ namespace MORT
 
         public string GetResult(string original, ref bool isError)
         {
-            RestSharp.Deserializers.JsonDeserializer deserial = new RestSharp.Deserializers.JsonDeserializer();
+            JsonDeserializer deserial = new JsonDeserializer();
             if ( string.IsNullOrWhiteSpace(original))
             {
                 Util.ShowLog("Empty");

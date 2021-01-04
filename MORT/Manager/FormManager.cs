@@ -5,6 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+// FIXME: WinRT Stub
+namespace ScreenCapture
+{
+    public class MainWindow
+    {
+        public bool isClosed = false;
+        public void Start(Action callback, Action closeCallback, Action stopCallback) { throw new NotImplementedException(); }
+        public void StopCapture() { throw new NotImplementedException(); }
+        public void DoCapture() { throw new NotImplementedException(); }
+        public bool GetData(ref byte[] array, ref int x, ref int y, ref int positionX, ref int positionY) { throw new NotImplementedException(); }
+
+
+        public void Show() { }
+        public void Start(Action callback) { }
+    }
+}
+
 namespace MORT
 {
     public class FormManager
